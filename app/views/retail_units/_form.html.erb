@@ -1,0 +1,29 @@
+<%= form_for(@retail_unit) do |f| %>
+  <% if @retail_unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@retail_unit.errors.count, "error") %> prohibited this retail_unit from being saved:</h2>
+
+      <ul>
+      <% @retail_unit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="actions">
+    <%= f.submit params[:action] == "edit" ? "Actualizar Departamento" : "Crear Departamento" %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  client_id: 1
+  order_status_id: 1
+  monto_total: 1.5
+  fecha_entrega: 2012-11-10
+  payment_status_id: 1
+  fecha_liberacion_pedido: 2012-11-10
+
+two:
+  client_id: 1
+  order_status_id: 1
+  monto_total: 1.5
+  fecha_entrega: 2012-11-10
+  payment_status_id: 1
+  fecha_liberacion_pedido: 2012-11-10

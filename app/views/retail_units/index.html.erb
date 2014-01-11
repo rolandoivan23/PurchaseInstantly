@@ -1,0 +1,27 @@
+<h1>Lista de unidades</h1>
+
+<table class="table">
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @retail_units.each do |retail_unit| %>
+  <tr>
+    <td><%= retail_unit.nombre %></td>
+    <td><%= retail_unit.descripcion %></td>
+    <td><%= retail_unit.tipo %></td>
+    <td><%= link_to 'Ver detalles', retail_unit %></td>
+    <td><%= link_to 'Editar', edit_retail_unit_path(retail_unit) %></td>
+    <td><%= link_to 'Eliminar', retail_unit, confirm: 'Esta seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Retail unit', new_retail_unit_path %>

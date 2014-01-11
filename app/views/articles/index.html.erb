@@ -1,0 +1,57 @@
+<script>
+	
+	function mostrar_div_cantidad(article_id){
+		$("#cantidad_articulo_" + article_id).show();
+		$("#agregar_articulo_" + article_id).hide();
+     
+	}
+	
+	function ocultar_div_cantidad(article_id){
+		$("#cantidad_articulo_" + article_id).hide();
+		$("#agregar_articulo_" + article_id).show();
+	}
+
+        function agregar_articulo_a_orden(article_id){
+          cantidad = $("#input_cantidad_articulo_" + article_id).val();
+          $("#tr_articulo_" + article_id).hide();
+          $.post("<%= add_article_to_order_url %>", {article_id:article_id,cantidad:cantidad});
+        }
+
+</script>
+<style>
+  .cantidad{display: none;}
+</style>
+
+
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+
+      <th>Departamento</th>
+      <th>Unidad de venta</th>
+      <th>Precio </th>
+      <th>Stock</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<% @articles.each do |article| %>
+  <% if Order.where( :client_id => current_user.client.id, :order_status_id => OrderStatus.find_by_nombre("En espera de cerrarla").id ).count > 0 %>
+     <% unless ArticlesOrder.where(:article_id => article.id, :order_id => Order.where(:order_status_id => OrderStatus.find_by_nombre("En espera de cerrarla").id, :client_id => current_user.client.id)[0].id).count > 0 %>
+      <%= render "tr_article", :article => article %>
+     <% end %>
+  <% else %>
+     <%= render "tr_article", :article => article %>
+   <% end %>
+<% end %>
+<br />
+
+
+</table>
+
+<%= link_to 'Crear un nuevo artículo', new_article_path, :class => "btn btn-primary"%>

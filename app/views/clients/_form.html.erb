@@ -1,0 +1,78 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div>
+  <div class="row show-grid offset1">
+    <div class="span4">
+        <div>
+          <%= f.label :nombre %>
+          <%= f.text_field :nombre %>
+        </div>
+        <div >
+          <%= f.label :apellido_paterno %>
+          <%= f.text_field :apellido_paterno %>
+        </div>
+        <div >
+          <%= f.label :apellido_materno %>
+          <%= f.text_field :apellido_materno %>
+        </div>
+        <div >
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+        <div >
+          <%= f.label :calle %>
+          <%= f.text_field :calle %>
+        </div>
+        <div >
+          <%= f.label :numero_exterior %>
+          <%= f.number_field :numero_exterior %>
+        </div>
+     </div>
+    <div class="span4">
+      <div>
+        <%= f.label :numero_interior %>
+        <%= f.number_field :numero_interior %>
+      </div>
+      <div>
+        <%= f.label :ciudad_id %>
+        <%= f.number_field :ciudad_id %>
+      </div>
+      <div>
+        <%= f.label :estado_id %>
+        <%= f.number_field :estado_id %>
+      </div>
+      
+        <%= f.fields_for :user, @client.user  do |user_form|%>
+          <div>
+            <%= user_form.label :login %>
+            <%= user_form.text_field :login %>
+          </div>
+          <div>
+            <%= user_form.label :password %>
+            <%= user_form.password_field :password %>
+          </div>
+        <div>
+            <%= user_form.label :password_confirmation %>
+            <%= user_form.password_field :password_confirmation %>
+          </div>
+        <% end %>
+      
+      
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Registrarse", :class => "btn btn-primary", :disable_with => "Guardando Usuario"  %>
+  </div>
+<% end %>

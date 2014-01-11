@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row show-grid">
+  <div class="span5">
+    <blockquote>
+    
+    <h4>Cliente:</h4>
+    <%= @order.client.nombre %>
+    
+    <br/>
+    <p>
+      <h4>Estatus de la orden:</h4>
+      <%=  @order.order_status.nombre %>
+    </p>
+    <br/>
+    
+    <p>
+      <h4>Estatus del pago:</h4>
+      <%= @order.payment_status.nil? ? "Sin definir" : @order.payment_status.nombre %>
+    </p>
+    <br/>
+    <p>
+      <h4>Fecha liberacion pedido:</h4>
+      <%= @order.fecha_liberacion_pedido.nil? ? "Aún no se ha enviado" : @order.fecha_liberacion_pedido %>
+    </p>
+    <br/>
+    <p>
+      <h4>Fecha entrega:</h4>
+      <%= @order.fecha_entrega.nil? ? "Aún no se ha entregado" : @order.fecha_entrega %>
+    </p>
+    
+   </blockquote>
+  </div>
+  <div class="span7 ">
+    <h4>Artículos de la orden</h4>
+    <table class="table">
+      <thead>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+      </thead>
+      <tbody>
+        <% @order.articles_orders_rows.each do |row| %>
+          <tr>
+            <td><%= row.article.nombre %></td>
+            <td><%= row.article.precio_por_unidad_de_venta %></td>
+            <td><%= row.cantidad %></td>
+            <td><%= row.cantidad * row.article.precio_por_unidad_de_venta %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="span2 offset">
+   <em><strong><i><span id="total_orden" class="label label-info">
+           <p><b>Monto total:</b><%= @order.monto_total %></p>
+    </span></i></strong></em>
+  </div>
+  </div>
+</div>
+
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

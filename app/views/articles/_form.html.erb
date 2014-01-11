@@ -1,0 +1,46 @@
+<br />
+<%= form_for(@article, :html => { :multipart => true}) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br />
+    <%= f.text_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br />
+    <%= f.collection_select(:department_id, Department.all, :id, :nombre) %>
+  </div>
+  <div class="field">
+    <%= f.label :retail_unit_id %><br />
+    <%= f.collection_select(:retail_unit_id, RetailUnit.all, :id, :nombre) %>
+  </div>
+  <div class="field">
+    <%= f.label :precio_por_unidad_de_venta %><br />
+    <%= f.text_field :precio_por_unidad_de_venta %>
+  </div>
+  <div class="field">
+    <%= f.label :stock %><br />
+    <%= f.number_field :stock %>
+  </div>
+  <div class="fields">
+    <%= f.label :imagen, "Imagen" %>
+    <%= f.file_field :imagen %>
+  </div>
+  <div class="actions">
+    <%= f.submit params[:action] == "edit" ? "Actualizar Departamento" : "Crear Departamento" %>
+  </div>
+<% end %>

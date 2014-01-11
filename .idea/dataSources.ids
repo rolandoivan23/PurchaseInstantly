@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails taller_emprendedors-master: development" uuid="ccf59a00-629d-4eb6-957a-271b486aa5ec">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails taller_emprendedors-master: test" uuid="0663bd7d-61d7-4a64-a348-037ca3864703">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails taller_emprendedors-master: production" uuid="4595daa1-2f15-4ae8-956d-69db4410923b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

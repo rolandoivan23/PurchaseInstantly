@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  marca: MyString
+  department_id: 1
+  retail_unit_id: 1
+  precio_por_unidad_de_venta: 1.5
+  stock: 1
+
+two:
+  nombre: MyString
+  marca: MyString
+  department_id: 1
+  retail_unit_id: 1
+  precio_por_unidad_de_venta: 1.5
+  stock: 1

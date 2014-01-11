@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @retail_unit.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @retail_unit.descripcion %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @retail_unit.tipo %>
+</p>
+
+
+<%= link_to 'Editar', edit_retail_unit_path(@retail_unit) %> |
+<%= link_to 'Lista de unidades', retail_units_path %>

@@ -1,0 +1,20 @@
+<tr id="tr_articulo_<%= article.id %>">
+          <td><%= image_tag article.imagen.url(:thumb) %></td>
+          <td><%= article.nombre %></td>
+          <td><%= article.department.nil? ? "Sin asignar" : article.department.nombre %></td>
+          <td><%= article.retail_unit.nil? ? "Sin asignar" : article.retail_unit.nombre %></td>
+
+          <td><%= article.precio_por_unidad_de_venta %></td>
+          <td><%= article.stock %></td>
+          <td><%= link_to 'Ver detalles', article %></td>
+          
+          <td><%= link_to 'Editar', edit_article_path(article) %></td>
+          <td><%= link_to 'Eliminar', article, confirm: 'Esta seguro?', method: :delete %></td>
+          <% if Order.where("order_status_id = ?",  OrderStatus.find_by_nombre("En espera de cerrarla").id).count > 0 %>
+              <td id="cantidad_articulo_<%= article.id %>" class="cantidad"> <label>Cantidad:</label><input id="input_cantidad_articulo_<%= article.id %>" type="number" style="width: 20px;" /><div><a onclick="agregar_articulo_a_orden(<%= article.id %>);">Agregar al carrito</a><label onclick="ocultar_div_cantidad(<%= article.id%>);">Ocultar</label></div></dir></td>
+              <td id="agregar_articulo_<%= article.id %>" class="add_articles" ><label href="#" onclick="mostrar_div_cantidad(<%= article.id %>);" class="btn btn-info ">Agregar</label></td>
+          <% else %>
+              <td id="cantidad_articulo_<%= article.id %>" class="cantidad" style="display:none;"> <label>Cantidad:</label><input id="input_cantidad_articulo_<%= article.id %>" type="number" style="width: 20px;" /><div><a onclick="agregar_articulo_a_orden(<%= article.id %>);">Agregar al carrito</a><label onclick="ocultar_div_cantidad(<%= article.id%>);">Ocultar</label></div></dir></td>
+              <td id="agregar_articulo_<%= article.id %>" class="add_articles" style="display:none;"><label href="#" onclick="mostrar_div_cantidad(<%= article.id %>);" class="btn btn-info ">Agregar</label></td>
+          <% end %>
+        </tr>

@@ -1,0 +1,14 @@
+
+$('#lista_articulos_orden tr:last').after('<tr><td><%= @article.nombre %></td><td><%= @cantidad %></td><td><%= @subtotal %></td></tr>');
+
+if($("#total_orden").length == 0){
+  $("#articulos_pedidos").append('<div class="span3 offset8"><em><strong><i><span id="total_orden" class="label label-info">Total: <%= @total %></span></i></strong></em></div>');
+}
+else{
+  $("#total_orden").text('Total: ' + <%= @total %>);
+}
+
+if($("#efectuar_compra").length == 0){
+  $("#articulos_pedidos").append('<input type="button" id="efectuar_compra" class="btn btn-large" value="Efectuar compra" onclick="efecutar_compra(<%= @order_id %>);"/>')
+}
+
