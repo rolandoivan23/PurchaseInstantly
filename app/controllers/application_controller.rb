@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
     helper_method :current_user_session, :current_user
-    #before_filter :authenticate
+    before_filter :authenticate
 
   def create_order
     Order.create(:client_id => params[:cliente_id], :order_status_id => 1, :monto_total => 0, :payment_status_id => 1)
